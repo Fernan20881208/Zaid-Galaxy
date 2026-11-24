@@ -191,52 +191,54 @@ class MainActivity : ComponentActivity() {
         czg3BootMinUptimeSeconds = AppPreferences.czg3BootMinUptimeSeconds(this)
         setContent {
             RootMyGalaxyTheme(accentColor = accentColor, themeMode = themeMode) {
-                RootApp(
-                    installViewModel = installViewModel,
-                    accentColor = accentColor,
-                    themeMode = themeMode,
-                    advancedMode = advancedMode,
-                    shizukuMode = shizukuMode,
-                    autoRootEnabled = autoRootEnabled,
-                    restartZygoteAfterRoot = restartZygoteAfterRoot,
-                    czg3BootMinUptimeSeconds = czg3BootMinUptimeSeconds,
-                    onAccentColorChanged = { color ->
-                        AppPreferences.setAccentColor(this, color)
-                        accentColor = color
-                    },
-                    onThemeModeChanged = { mode ->
-                        AppPreferences.setThemeMode(this, mode)
-                        themeMode = mode
-                    },
-                    onAdvancedModeChanged = { enabled ->
-                        AppPreferences.setAdvancedMode(this, enabled)
-                        advancedMode = enabled
-                    },
-                    onShizukuModeChanged = { enabled ->
-                        AppPreferences.setShizukuMode(this, enabled)
-                        shizukuMode = enabled
-                    },
-                    onAutoRootEnabledChanged = { enabled ->
-                        AppPreferences.setAutoRootEnabled(this, enabled)
-                        autoRootEnabled = enabled
-                    },
-                    onRestartZygoteAfterRootChanged = { enabled ->
-                        AppPreferences.setRestartZygoteAfterRoot(this, enabled)
-                        restartZygoteAfterRoot = enabled
-                    },
-                    onCzg3BootMinUptimeChanged = { seconds ->
-                        AppPreferences.setCzg3BootMinUptimeSeconds(this, seconds)
-                        czg3BootMinUptimeSeconds = DiagnosticUptime.normalize(seconds)
-                    },
-                    openInstaller = { profileId ->
-                        val installer = Intent(this, InstallActivity::class.java)
-                            .putExtra(InstallActivity.EXTRA_INSTALL_REQUEST_ID, UUID.randomUUID().toString())
-                        if (profileId != null) {
-                            installer.putExtra(InstallActivity.EXTRA_PROFILE_ID, profileId)
-                        }
-                        startActivity(installer)
-                    },
-                )
+                ZaidLicenseGate {
+                    RootApp(
+                        installViewModel = installViewModel,
+                        accentColor = accentColor,
+                        themeMode = themeMode,
+                        advancedMode = advancedMode,
+                        shizukuMode = shizukuMode,
+                        autoRootEnabled = autoRootEnabled,
+                        restartZygoteAfterRoot = restartZygoteAfterRoot,
+                        czg3BootMinUptimeSeconds = czg3BootMinUptimeSeconds,
+                        onAccentColorChanged = { color ->
+                            AppPreferences.setAccentColor(this, color)
+                            accentColor = color
+                        },
+                        onThemeModeChanged = { mode ->
+                            AppPreferences.setThemeMode(this, mode)
+                            themeMode = mode
+                        },
+                        onAdvancedModeChanged = { enabled ->
+                            AppPreferences.setAdvancedMode(this, enabled)
+                            advancedMode = enabled
+                        },
+                        onShizukuModeChanged = { enabled ->
+                            AppPreferences.setShizukuMode(this, enabled)
+                            shizukuMode = enabled
+                        },
+                        onAutoRootEnabledChanged = { enabled ->
+                            AppPreferences.setAutoRootEnabled(this, enabled)
+                            autoRootEnabled = enabled
+                        },
+                        onRestartZygoteAfterRootChanged = { enabled ->
+                            AppPreferences.setRestartZygoteAfterRoot(this, enabled)
+                            restartZygoteAfterRoot = enabled
+                        },
+                        onCzg3BootMinUptimeChanged = { seconds ->
+                            AppPreferences.setCzg3BootMinUptimeSeconds(this, seconds)
+                            czg3BootMinUptimeSeconds = DiagnosticUptime.normalize(seconds)
+                        },
+                        openInstaller = { profileId ->
+                            val installer = Intent(this, InstallActivity::class.java)
+                                .putExtra(InstallActivity.EXTRA_INSTALL_REQUEST_ID, UUID.randomUUID().toString())
+                            if (profileId != null) {
+                                installer.putExtra(InstallActivity.EXTRA_PROFILE_ID, profileId)
+                            }
+                            startActivity(installer)
+                        },
+                    )
+                }
             }
         }
     }
