@@ -27,8 +27,8 @@
     <string name="device_mismatch_title">设备不匹配</string><string name="device_mismatch_body">当前设备为 %1$s，但所选 payload 支持 %2$s。运行可能导致设备停止响应或损坏。</string>
     <string name="kernel_version_mismatch_title">内核版本不匹配</string><string name="kernel_version_mismatch_body">当前内核为 %1$s，但所选 payload 支持 %2$s。偏移量可能不兼容。</string>
     <string name="about">关于</string>
-    <string name="about_title">关于 Root My Galaxy</string>
-    <string name="about_description">关于 Root My Galaxy</string>
+    <string name="about_title">关于 Zaid Galaxy</string>
+    <string name="about_description">关于 Zaid Galaxy</string>
     <string name="about_body">一键安装器，利用内核漏洞对受支持的三星 Galaxy 设备进行 root。</string>
     <string name="history_payload">Payload: %1$s</string>
     <string name="export_log">导出日志</string>

@@ -1,5 +1,9 @@
 package dev.busung.s25uroot
 
+import dev.busung.s25uroot.ui.theme.galaxyGlassBorder
+import dev.busung.s25uroot.ui.theme.galaxyGlassPanel
+import dev.busung.s25uroot.ui.theme.galaxyGlassBackground
+
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -35,7 +39,6 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -388,6 +391,9 @@ private fun RootApp(
     compatibilityWarning?.let { warning ->
         val profile = selectedProfile ?: return@let
         AlertDialog(
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            tonalElevation = 0.dp,
             onDismissRequest = {
                 compatibilityWarning = null
                 showTargetPicker = true
@@ -454,6 +460,9 @@ private fun RootApp(
 
     if (showInstallConfirmation) {
         AlertDialog(
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            tonalElevation = 0.dp,
             onDismissRequest = { showInstallConfirmation = false },
             icon = { Icon(Icons.Rounded.Security, contentDescription = null) },
             title = {
@@ -483,22 +492,14 @@ private fun RootApp(
     }
 
     Scaffold(
-        modifier = Modifier.background(
-            Brush.verticalGradient(
-                listOf(
-                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f),
-                    MaterialTheme.colorScheme.surface,
-                    MaterialTheme.colorScheme.surfaceContainer,
-                ),
-            ),
-        ),
+        modifier = galaxyGlassBackground(),
         bottomBar = {
             NavigationBar(
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 8.dp)
                     .clip(RoundedCornerShape(30.dp))
-                    .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(30.dp)),
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.96f),
+                    .border(galaxyGlassBorder(), RoundedCornerShape(30.dp)),
+                containerColor = galaxyGlassPanel(),
                 tonalElevation = 0.dp,
             ) {
                 AppPage.entries.forEach { page ->
@@ -689,6 +690,7 @@ private fun UpdateCard(
     val info = status.info
     if (info == null) return
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
@@ -763,10 +765,11 @@ private fun UpdateCard(
 @Composable
 private fun HowItWorksCard() {
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Column(
@@ -811,6 +814,7 @@ private fun InstallStatusCard(installState: InstallUiState, onInstall: () -> Uni
     val uriHandler = LocalUriHandler.current
     val managerInstalled = remember(installState) { isKernelSuManagerInstalled(context) }
     Card(
+        border = galaxyGlassBorder(),
         onClick = {
             clickHaptic(view)
             when {
@@ -905,10 +909,11 @@ private fun DeviceCard(device: DeviceSnapshot) {
     val view = LocalView.current
     var kernelExpanded by remember { mutableStateOf(false) }
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth().animateContentSize(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Column(
@@ -1011,6 +1016,9 @@ private fun HistoryPage(
 
     pendingDeleteIds?.let { ids ->
         AlertDialog(
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            tonalElevation = 0.dp,
             onDismissRequest = { pendingDeleteIds = null },
             icon = { Icon(Icons.Rounded.Delete, contentDescription = null) },
             title = {
@@ -1223,10 +1231,11 @@ private fun HistoryList(
 @Composable
 private fun EmptyHistoryCard() {
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Row(
@@ -1284,7 +1293,7 @@ private fun HistoryEntryCard(
         border = if (borderWidth > 0.dp) {
             BorderStroke(borderWidth, MaterialTheme.colorScheme.secondary)
         } else {
-            null
+            galaxyGlassBorder()
         },
         colors = CardDefaults.cardColors(
             containerColor = containerColor,
@@ -1382,10 +1391,11 @@ private fun HistoryDetail(
         item { HistoryResultCard(entry) }
         item {
             Card(
+                border = galaxyGlassBorder(),
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                    containerColor = galaxyGlassPanel(),
                 ),
             ) {
                 Text(
@@ -1405,6 +1415,7 @@ private fun HistoryResultCard(entry: InstallHistoryEntry) {
     val containerColor = historyResultContainerColor(entry.result)
     val contentColor = historyResultContentColor(entry.result)
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(containerColor = containerColor, contentColor = contentColor),
@@ -1577,6 +1588,9 @@ private fun SettingsPage(
 
     if (showAutoRootNotReadyDialog) {
         AlertDialog(
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            tonalElevation = 0.dp,
             onDismissRequest = { showAutoRootNotReadyDialog = false },
             icon = { Icon(Icons.Rounded.Security, contentDescription = null) },
             title = {
@@ -1598,6 +1612,9 @@ private fun SettingsPage(
 
     if (showShizukuMissingDialog) {
         AlertDialog(
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            tonalElevation = 0.dp,
             onDismissRequest = { showShizukuMissingDialog = false },
             icon = { Icon(Icons.Rounded.Info, contentDescription = null) },
             title = {
@@ -1863,6 +1880,7 @@ private fun UpdateSettingsCard(
     val view = LocalView.current
     val busy = status.busy
     Card(
+        border = galaxyGlassBorder(),
         onClick = {
             clickHaptic(view)
             when {
@@ -1875,7 +1893,7 @@ private fun UpdateSettingsCard(
         shape = expressiveClickableCardShape(interactionSource, position),
         interactionSource = interactionSource,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Row(
@@ -1953,7 +1971,12 @@ private fun TargetSelectionSheet(
     }
     val selectedProfile = catalog.profiles.firstOrNull { it.profileId == selectedProfileId }
 
-    ModalBottomSheet(onDismissRequest = onDismiss) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        shape = MaterialTheme.shapes.extraLarge,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+        tonalElevation = 0.dp,
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -2130,6 +2153,7 @@ private fun SettingsCard(
     val interactionSource = remember { MutableInteractionSource() }
     val view = LocalView.current
     Card(
+        border = galaxyGlassBorder(),
         onClick = {
             clickHaptic(view)
             onClick()
@@ -2138,7 +2162,7 @@ private fun SettingsCard(
         shape = expressiveClickableCardShape(interactionSource, position),
         interactionSource = interactionSource,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Row(
@@ -2179,6 +2203,7 @@ private fun SettingsSwitchCard(
     val interactionSource = remember { MutableInteractionSource() }
     val view = LocalView.current
     Card(
+        border = galaxyGlassBorder(),
         onClick = {
             clickHaptic(view)
             onCheckedChange(!checked)
@@ -2187,7 +2212,7 @@ private fun SettingsSwitchCard(
         shape = expressiveClickableCardShape(interactionSource, position),
         interactionSource = interactionSource,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Row(
@@ -2229,7 +2254,7 @@ private fun ThemeModeSelector(
                 },
                 modifier = Modifier.weight(1f).semantics { role = Role.RadioButton },
                 colors = ToggleButtonDefaults.toggleButtonColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                    containerColor = galaxyGlassPanel(),
                 ),
                 shapes = when (index) {
                     0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
@@ -2258,6 +2283,9 @@ private fun AboutDialog(onDismiss: () -> Unit) {
     val uriHandler = LocalUriHandler.current
     val view = LocalView.current
     AlertDialog(
+        shape = MaterialTheme.shapes.extraLarge,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+        tonalElevation = 0.dp,
         onDismissRequest = onDismiss,
         title = {
             DialogDimAmount(0.34f)
@@ -2296,6 +2324,27 @@ private fun AboutDialog(onDismiss: () -> Unit) {
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
+                        Icon(Icons.Rounded.Link, contentDescription = stringResource(R.string.open_github))
+                    }
+                }
+                Surface(
+                    onClick = {
+                        clickHaptic(view)
+                        uriHandler.openUri("https://github.com/Fernan20881208/Zaid-Galaxy")
+                    },
+                    color = galaxyGlassPanel(),
+                    border = galaxyGlassBorder(),
+                    shape = MaterialTheme.shapes.medium,
+                ) {
+                    Row(
+                        modifier = Modifier.padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        Icon(painterResource(R.drawable.ic_app_logo), contentDescription = null,
+                            modifier = Modifier.size(32.dp), tint = Color.Unspecified)
+                        Text(stringResource(R.string.app_name), modifier = Modifier.weight(1f),
+                            style = MaterialTheme.typography.titleSmall)
                         Icon(Icons.Rounded.Link, contentDescription = stringResource(R.string.open_github))
                     }
                 }

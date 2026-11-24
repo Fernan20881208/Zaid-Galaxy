@@ -1,5 +1,8 @@
 package dev.busung.s25uroot
 
+import dev.busung.s25uroot.ui.theme.galaxyGlassBorder
+import dev.busung.s25uroot.ui.theme.galaxyGlassPanel
+
 import android.os.Build
 import android.view.HapticFeedbackConstants
 import android.widget.Toast
@@ -210,6 +213,7 @@ private fun HoldRecoveryCard(
     }
 
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier
             .fillMaxWidth()
             .alpha(alpha)
@@ -238,7 +242,7 @@ private fun HoldRecoveryCard(
             },
         shape = shape,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
             contentColor = contentColor,
         ),
     ) {

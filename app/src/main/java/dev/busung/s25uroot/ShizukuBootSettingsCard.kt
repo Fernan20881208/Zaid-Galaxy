@@ -1,5 +1,8 @@
 package dev.busung.s25uroot
 
+import dev.busung.s25uroot.ui.theme.galaxyGlassBorder
+import dev.busung.s25uroot.ui.theme.galaxyGlassPanel
+
 import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
@@ -57,6 +60,9 @@ internal fun ShizukuBootSettingsCard() {
 
     if (showForgetDialog) {
         AlertDialog(
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            tonalElevation = 0.dp,
             onDismissRequest = { showForgetDialog = false },
             title = { Text(stringResource(R.string.wireless_adb_forget_title)) },
             text = { Text(stringResource(R.string.wireless_adb_forget_body)) },
@@ -84,10 +90,11 @@ internal fun ShizukuBootSettingsCard() {
     }
 
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth().animateContentSize(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Column(
