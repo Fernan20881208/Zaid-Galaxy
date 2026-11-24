@@ -120,6 +120,26 @@ jobs:
           distribution: temurin
           java-version: "21"
 
+      - name: Preparar chave de assinatura
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          set -euo pipefail
+          for name in KEYSTORE_BASE64 STORE_PASSWORD KEY_ALIAS; do
+            if [[ -z "${!name:-}" ]]; then
+              echo "Secret obrigatório ausente: $name" >&2
+              exit 1
+            fi
+          done
+          printf '%s' "$KEYSTORE_BASE64" | tr -d '\r\n ' | base64 --decode > release.keystore
+          chmod 600 release.keystore
+          keytool -list \
+            -keystore release.keystore \
+            -storepass "$STORE_PASSWORD" \
+            -alias "$KEY_ALIAS" >/dev/null
+
       - name: Preparar cache do Gradle
         uses: gradle/actions/setup-gradle@v6
 
@@ -181,31 +201,11 @@ jobs:
               print(archive.read(provenance_name).decode("utf-8"), end="")
           PY
 
-      - name: Preparar chave de assinatura
-        env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-          STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-        run: |
-          set -euo pipefail
-          for name in KEYSTORE_BASE64 STORE_PASSWORD KEY_ALIAS; do
-            if [[ -z "${!name:-}" ]]; then
-              echo "Secret obrigatório ausente: $name" >&2
-              exit 1
-            fi
-          done
-          printf '%s' "$KEYSTORE_BASE64" | tr -d '\r\n ' | base64 --decode > release.keystore
-          chmod 600 release.keystore
-          keytool -list \
-            -keystore release.keystore \
-            -storepass "$STORE_PASSWORD" \
-            -alias "$KEY_ALIAS" >/dev/null
-
       - name: Assinar e verificar APK
         env:
-          STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.STORE_PASSWORD }}
         run: |
           set -euo pipefail
           for name in STORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do

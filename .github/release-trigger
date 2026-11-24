@@ -1,1 +1,1 @@
-2026-11-24 Request Zaid Galaxy release with application ID Zaid.Galaxy.Root
+2026-11-24 Fix signing secret mapping and validate signing key before compilation
