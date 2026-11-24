@@ -218,7 +218,7 @@ jobs:
           BUILD_TOOLS_DIR="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
           UNSIGNED_APK=app/build/outputs/apk/release/app-release-unsigned.apk
           ALIGNED_APK=app/build/outputs/apk/release/app-release-aligned.apk
-          RELEASE_ASSET="Root-My-Galaxy-${VERSION_NAME}.apk"
+          RELEASE_ASSET="Zaid-Galaxy-${VERSION_NAME}.apk"
 
           "$BUILD_TOOLS_DIR/zipalign" -P 16 -f 4 "$UNSIGNED_APK" "$ALIGNED_APK"
           "$BUILD_TOOLS_DIR/apksigner" sign \
@@ -232,7 +232,7 @@ jobs:
           "$BUILD_TOOLS_DIR/apksigner" verify --verbose --print-certs "$RELEASE_ASSET"
 
           BADGING="$($BUILD_TOOLS_DIR/aapt dump badging "$RELEASE_ASSET" | head -n 1)"
-          grep -F "package: name='dev.busung.s25uroot'" <<< "$BADGING"
+          grep -F "package: name='Zaid.Galaxy.Root'" <<< "$BADGING"
           grep -F "versionCode='${VERSION_CODE}'" <<< "$BADGING"
           grep -F "versionName='${VERSION_NAME}'" <<< "$BADGING"
 
@@ -250,7 +250,7 @@ jobs:
           export HEAD_SHA="$GITHUB_SHA"
           export VERSION_NAME
           export SHA256
-          export PRODUCT_NAME="Root My Galaxy"
+          export PRODUCT_NAME="Zaid Galaxy"
           export BASE_BRANCH="main"
           export NOTES_PATH
           python3 .github/scripts/build_release_notes.py
@@ -273,7 +273,7 @@ jobs:
             "$RELEASE_ASSET" \
             "${RELEASE_ASSET}.sha256" \
             --verify-tag \
-            --title "Root My Galaxy ${VERSION_NAME}" \
+            --title "Zaid Galaxy ${VERSION_NAME}" \
             --notes-file "$NOTES_PATH" \
             --latest
 

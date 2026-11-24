@@ -16,7 +16,7 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "dev.busung.s25uroot"
+        applicationId = "Zaid.Galaxy.Root"
         minSdk = 33
         targetSdk = 36
         versionCode = releaseVersionCode
