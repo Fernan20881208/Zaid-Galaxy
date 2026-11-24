@@ -1,5 +1,9 @@
 package dev.busung.s25uroot
 
+import dev.busung.s25uroot.ui.theme.galaxyGlassBorder
+import dev.busung.s25uroot.ui.theme.galaxyGlassPanel
+import dev.busung.s25uroot.ui.theme.galaxyGlassBackground
+
 import android.os.Build
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
@@ -54,6 +58,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
@@ -144,6 +149,9 @@ private fun ManualPayloadModeDialog(
     onCancel: () -> Unit,
 ) {
     AlertDialog(
+        shape = MaterialTheme.shapes.extraLarge,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+        tonalElevation = 0.dp,
         onDismissRequest = {},
         title = { Text(stringResource(R.string.manual_payload_source_title)) },
         text = { Text(stringResource(R.string.manual_payload_source_description)) },
@@ -201,7 +209,10 @@ private fun InstallScreen(
         logScrollState.scrollTo(logScrollState.maxValue)
     }
 
-    Scaffold { padding ->
+    Scaffold(
+        modifier = galaxyGlassBackground(),
+        containerColor = Color.Transparent,
+    ) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -281,6 +292,7 @@ private fun InstallScreen(
 @Composable
 private fun InstallerStatusCard(installState: InstallUiState) {
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier
             .fillMaxWidth()
             .animateContentSize(),
@@ -348,10 +360,11 @@ private fun InstallerStatusCard(installState: InstallUiState) {
 @Composable
 private fun InstallerSteps(phase: InstallPhase) {
     Card(
+        border = galaxyGlassBorder(),
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+            containerColor = galaxyGlassPanel(),
         ),
     ) {
         Column(
@@ -416,8 +429,10 @@ private fun InstallerLog(
     scrollState: androidx.compose.foundation.ScrollState,
 ) {
     Card(
+        border = galaxyGlassBorder(),
         modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.cardColors(containerColor = galaxyGlassPanel()),
     ) {
         Column(
             modifier = Modifier

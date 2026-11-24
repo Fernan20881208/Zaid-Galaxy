@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Root My Galaxy</string>
+    <string name="app_name">Zaid Galaxy</string>
     <string name="nav_overview">Asosiy</string>
     <string name="nav_history">Tarix</string>
     <string name="nav_settings">Sozlamalar</string>
@@ -66,8 +66,8 @@
     <string name="export_log_saved">Jurnal (log) saqlandi</string>
     <string name="export_log_failed">Jurnalni (logni) saqlab bo\'lmadi</string>
     <string name="about">Dastur haqida</string>
-    <string name="about_title">Root My Galaxy haqida</string>
-    <string name="about_description">Root My Galaxy haqida</string>
+    <string name="about_title">Zaid Galaxy haqida</string>
+    <string name="about_description">Zaid Galaxy haqida</string>
     <string name="about_body">Qo\'llab-quvvatlanadigan Samsung Galaxy qurilmalarini yadro eksployti yordamida bir bosish orqali root o\'rnatuvchi dastur.</string>
 
     <string name="install_title">O\'rnatish</string>

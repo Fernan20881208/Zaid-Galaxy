@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Root my Galaxy</string>
+    <string name="app_name">Zaid Galaxy</string>
     <string name="nav_overview">Início</string>
     <string name="nav_history">Histórico</string>
     <string name="nav_settings">Configurações</string>
@@ -133,7 +133,7 @@
     <string name="shizuku_mode_description">Usar o Shizuku para executar o payload. Isso pode melhorar a confiabilidade.</string>
     <string name="shizuku_boot_section">Inicialização do Shizuku</string>
     <string name="shizuku_boot_title">Iniciar Shizuku no boot</string>
-    <string name="shizuku_boot_description">O RMG aguarda qualquer Wi‑Fi e inicia o Shizuku sem atrasar o Auto Root. Outros iniciadores, como o do próprio Shizuku ou o Tasker, podem servir como redundância, mas um único iniciador principal evita corridas duplicadas.</string>
+    <string name="shizuku_boot_description">O Zaid Galaxy aguarda qualquer Wi‑Fi e inicia o Shizuku sem atrasar o Auto Root. Outros iniciadores, como o do próprio Shizuku ou o Tasker, podem servir como redundância, mas um único iniciador principal evita corridas duplicadas.</string>
     <string name="shizuku_boot_waiting">Aguardando Wi‑Fi ou um Binder do Shizuku já existente</string>
     <string name="shizuku_boot_auth_token">Token de autenticação da automação</string>
     <string name="shizuku_boot_auth_token_description">Fallback opcional por Intent. Copie o token em Shizuku → Control Shizuku with automation apps.</string>
@@ -146,8 +146,8 @@
     <string name="log_shizuku_prepare">[*] Preparando a execução do Shizuku</string>
     <string name="log_shizuku_permission">[+] Permissão do Shizuku concedida</string>
     <string name="about">Sobre</string>
-    <string name="about_title">Sobre o Root My Galaxy</string>
-    <string name="about_description">Sobre o Root My Galaxy</string>
+    <string name="about_title">Sobre o Zaid Galaxy</string>
+    <string name="about_description">Sobre o Zaid Galaxy</string>
     <string name="about_body">Instalador de um toque que usa uma exploração de kernel para enraizar dispositivos Samsung Galaxy compatíveis.</string>
     <string name="kernelsu_card_description">Solução de root baseada em kernel para Android</string>
     <string name="history_shizuku_used">Shizuku: usado</string>

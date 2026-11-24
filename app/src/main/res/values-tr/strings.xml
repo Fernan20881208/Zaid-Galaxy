@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Root My Galaxy</string>
+    <string name="app_name">Zaid Galaxy</string>
     <string name="nav_overview">Ana Sayfa</string>
     <string name="nav_history">Geçmiş</string>
     <string name="nav_settings">Ayarlar</string>
@@ -130,8 +130,8 @@
     <string name="kernel_version_mismatch_title">Kernel sürümü uyumsuzluğu</string>
     <string name="kernel_version_mismatch_body">Bu telefon %1$s kernel kullanıyor, ancak seçilen payload %2$s destekliyor. Ofsetler uyumsuz olabilir.</string>
     <string name="about">Hakkında</string>
-    <string name="about_title">Root My Galaxy Hakkında</string>
-    <string name="about_description">Root My Galaxy hakkında</string>
+    <string name="about_title">Zaid Galaxy Hakkında</string>
+    <string name="about_description">Zaid Galaxy hakkında</string>
     <string name="about_body">Desteklenen Samsung Galaxy cihazlarını çekirdek açığı kullanarak tek tıkla root eden yükleyicidir.</string>
     <string name="history_payload">Payload: %1$s</string>
     <string name="export_log">Günlüğü dışa aktar</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Root My Galaxy</string>
+    <string name="app_name">Zaid Galaxy</string>
     <string name="nav_overview">Home</string>
     <string name="nav_history">History</string>
     <string name="nav_settings">Settings</string>
@@ -71,8 +71,8 @@
     <string name="export_logs_saved" translatable="false">Saved %1$d logs</string>
     <string name="export_logs_failed" translatable="false">Unable to save logs</string>
     <string name="about">About</string>
-    <string name="about_title">About Root My Galaxy</string>
-    <string name="about_description">About Root My Galaxy</string>
+    <string name="about_title">About Zaid Galaxy</string>
+    <string name="about_description">Based on Root My Galaxy</string>
     <string name="about_body">One-click installer that uses a kernel exploit to root supported Samsung Galaxy devices.</string>
 
     <string name="install_title">Install</string>
@@ -133,7 +133,7 @@
     <string name="repo_url_invalid">The artifact repository is not allowed</string>
     <string name="repo_response_too_large">The response exceeded its size limit</string>
     <string name="open_github">Open GitHub</string>
-    <string name="github_card_title">Explore Root My Galaxy</string>
+    <string name="github_card_title">Explore the original project</string>
     <string name="github_card_description">View the source code and usage instructions.</string>
     <string name="action_continue">Continue anyway</string>
     <string name="action_next">Next</string>
@@ -144,7 +144,7 @@
     <string name="shizuku_mode_description">Use Shizuku to run the payload. This can improve reliability.</string>
     <string name="shizuku_boot_section">Shizuku startup</string>
     <string name="shizuku_boot_title">Start Shizuku on boot</string>
-    <string name="shizuku_boot_description">RMG waits for any Wi-Fi and starts Shizuku without delaying Auto Root. Other boot starters such as Shizuku or Tasker are supported as redundancy, but using one primary starter avoids duplicate races.</string>
+    <string name="shizuku_boot_description">Zaid Galaxy waits for any Wi-Fi and starts Shizuku without delaying Auto Root. Other boot starters such as Shizuku or Tasker are supported as redundancy, but using one primary starter avoids duplicate races.</string>
     <string name="shizuku_boot_waiting">Waiting for Wi-Fi or an existing Shizuku Binder</string>
     <string name="shizuku_boot_auth_token">Automation auth token</string>
     <string name="shizuku_boot_auth_token_description">Optional Intent fallback. Copy the token from Shizuku → Control Shizuku with automation apps.</string>
