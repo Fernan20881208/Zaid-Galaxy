@@ -34,6 +34,8 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -481,9 +483,22 @@ private fun RootApp(
     }
 
     Scaffold(
+        modifier = Modifier.background(
+            Brush.verticalGradient(
+                listOf(
+                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f),
+                    MaterialTheme.colorScheme.surface,
+                    MaterialTheme.colorScheme.surfaceContainer,
+                ),
+            ),
+        ),
         bottomBar = {
             NavigationBar(
-                containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .clip(RoundedCornerShape(30.dp))
+                    .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(30.dp)),
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.96f),
                 tonalElevation = 0.dp,
             ) {
                 AppPage.entries.forEach { page ->
@@ -500,7 +515,7 @@ private fun RootApp(
                 }
             }
         },
-        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+        containerColor = Color.Transparent,
     ) { padding ->
         AnimatedContent(targetState = selectedPage, label = "page") { page ->
             when (page) {
@@ -613,7 +628,8 @@ private fun OverviewPage(
                 Icon(
                     painter = painterResource(R.drawable.ic_app_logo),
                     contentDescription = null,
-                    modifier = Modifier.size(36.dp),
+                    modifier = Modifier.size(44.dp),
+                    tint = Color.Unspecified,
                 )
                 Text(
                     text = stringResource(R.string.app_name),
@@ -622,7 +638,7 @@ private fun OverviewPage(
                 Spacer(modifier = Modifier.weight(1f))
                 AppVersionText(
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.45f),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }
